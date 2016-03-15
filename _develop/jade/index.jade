@@ -1,0 +1,33 @@
+extends layout/_defaultLayout
+
+include mixin/_mixin
+
+prepend ConfigBlock
+  - page_name = ''
+
+block StylesheetBlock
+  link(rel="stylesheet", href="./css/style.css")
+
+// append JavascriptBlock
+
+block HeadJavascriptBlock
+
+block ContentBlock
+  
+  div.page-wrapper
+    
+    //include layout/_loading
+    
+    div.js-main-wrapper.main-wrapper
+
+      div#js-content
+
+    //block FooterBlock
+      include layout/_footer
+
+block JavascriptBlock
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js")
+  //script(src=http_path + "js/lib/velocity.min.js")
+  //script(src=http_path + "js/lib/createjs-2015.11.26.min.js")
+  //script(src=http_path + "js/lib/CSSPlugin.js")
+  script(src=http_path + "js/app.js")

@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+// ==========================================================================
+// Core files
+// ==========================================================================
+
+@import
+  "module/sprite-pc",
+  "module/sprite-sp";
+
+// configuration file
+@import
+  "config/config";
+  //"config/definitions";
+
+// original mixins and functions
+@import
+  "mixin/import",
+  "function/import";
+
+// ==========================================================================
+// Component files
+// ==========================================================================
+
+@import "reset/reset";
+
+@import "state/state",
+        "state/sp-util";
+
+@import "layout/base";
