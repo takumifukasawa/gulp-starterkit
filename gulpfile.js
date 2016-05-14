@@ -13,6 +13,7 @@ var gulp        = require('gulp'),
     browserify  = require(config.path.tasks + 'Browserify.js'),
     webpack     = require(config.path.tasks + 'Webpack.js'),
     server      = require(config.path.tasks + 'Server.js'),
+    sass        = require(config.path.tasks + 'Sass.js'),
     compass     = require(config.path.tasks + 'Compass.js'),
     autoprefixer = require(config.path.tasks + 'AutoPrefixer.js'),
     sprite      = require(config.path.tasks + 'Sprite.js'),
@@ -45,6 +46,15 @@ gulp.task('webpack', gulp.series('webpack', function(done) {
 
 gulp.registry(server);
 gulp.task('server', gulp.series('server', function(done) {
+  done();
+}));
+
+/////////////////////////////////////////////
+// # sass
+/////////////////////////////////////////////
+
+gulp.registry(sass);
+gulp.task('sass', gulp.series('sass', function(done) {
   done();
 }));
 
@@ -120,7 +130,7 @@ gulp.task('jade', gulp.series('jade', function(done) {
 // # build
 /////////////////////////////////////////////
 
-gulp.task('build', gulp.series('jade', 'webpack', 'compass', function(done) {
+gulp.task('build', gulp.series('jade', 'webpack', 'sass', function(done) {
   gulp.series('reload');
   done();
 }));
@@ -131,7 +141,7 @@ gulp.task('build', gulp.series('jade', 'webpack', 'compass', function(done) {
 /////////////////////////////////////////////
 
 gulp.task('watch', function() {
-  var watcherScss = gulp.watch(config.path.scssFile, gulp.series('compass'));
+  var watcherScss = gulp.watch(config.path.scssFile, gulp.series('sass'));
   watcherScss.on('change', function(event) {
     gutil.log("onchange!");
   });
