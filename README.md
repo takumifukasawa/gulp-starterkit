@@ -1,7 +1,7 @@
 # gulp-starterkit
 
 ### html
-jade
+pug
 
 ### css
 sass or compass (default sass)
