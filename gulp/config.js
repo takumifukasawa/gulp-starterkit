@@ -40,9 +40,13 @@ module.exports = {
     // jade
     jadeEntry: dev + 'jade/**/!(_)*.jade',
 
+    // pug
+    pugEntry: dev + 'pug/**/!(_)*.pug',
+    
     // for watch task
     scssFile: dev + 'scss/**/*.{sass,scss}',
     jadeFile: dev + 'jade/**/*.jade',
+    pugFile: dev + 'pug/**/*.pug',
     jsFile: dev + 'js/**/*.{js,jsx}',
 
     // for sprite task

@@ -18,6 +18,7 @@ var gulp        = require('gulp'),
     autoprefixer = require(config.path.tasks + 'AutoPrefixer.js'),
     sprite      = require(config.path.tasks + 'Sprite.js'),
     jade        = require(config.path.tasks + 'Jade.js'),
+    pug         = require(config.path.tasks + 'Pug.js'),
     copy        = require(config.path.tasks + 'Copy.js'),
     minify      = require(config.path.tasks + 'Minify.js'),
     deployAWS   = require(config.path.tasks + 'DeployAWS.js');
@@ -127,10 +128,21 @@ gulp.task('jade', gulp.series('jade', function(done) {
 }));
 
 /////////////////////////////////////////////
+// # pug
+/////////////////////////////////////////////
+
+gulp.registry(pug);
+gulp.task('pug', gulp.series('pug', function(done) {
+  gulp.series('reload');
+  done();
+}));
+
+
+/////////////////////////////////////////////
 // # build
 /////////////////////////////////////////////
 
-gulp.task('build', gulp.series('jade', 'webpack', 'sass', function(done) {
+gulp.task('build', gulp.series('pug', 'webpack', 'sass', function(done) {
   gulp.series('reload');
   done();
 }));
@@ -146,8 +158,15 @@ gulp.task('watch', function() {
     gutil.log("onchange!");
   });
 
+  /*
   var watcherJade = gulp.watch(config.path.jadeFile, gulp.series('jade'));
   watcherJade.on('change', function(event) {
+    gutil.log('onchange!');
+  });
+  */
+
+  var watcherPug = gulp.watch(config.path.pugFile, gulp.series('pug'));
+  watcherPug.on('change', function(event) {
     gutil.log('onchange!');
   });
 

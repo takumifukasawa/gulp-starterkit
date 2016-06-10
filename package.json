@@ -42,6 +42,7 @@
     "gulp-notify-growl": "1.0.*",
     "gulp-pleeease": "1.2.*",
     "gulp-plumber": "1.0.*",
+    "gulp-pug": "^3.0.3",
     "gulp-rename": "1.2.*",
     "gulp-ruby-sass": "2.0.*",
     "gulp-sass": "^2.0.4",
